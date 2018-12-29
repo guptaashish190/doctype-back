@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const Doctor = new Schema({
-    basic: {
+    auth: {
         username: String,
+        password: String
+    },
+    basic: {
         name: String,
         age: Number,
         dob: Date,
@@ -25,13 +28,12 @@ const Doctor = new Schema({
 
 Doctor.pre('save', function (next) {
     const user = this;
-    console.log(user);
     bcrypt.genSalt(10, function (err, salt) {
         if (err) return next(err);
 
-        bcrypt.hash(user.password, salt, function (err, hash) {
+        bcrypt.hash(user.auth.password, salt, function (err, hash) {
             if (err) return next(err);
-            user.password = hash;
+            user.auth.password = hash;
             next();
         });
     });
