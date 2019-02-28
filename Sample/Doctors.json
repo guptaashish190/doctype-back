@@ -1,0 +1,100 @@
+[{
+    "auth": {
+        "username": "ashishguptadoctor",
+        "password": "$2a$10$Kku1ytOBzTiHGd5vzDBrtupZ/h73/KmwHfWHJg1Envk3M6Y/UsW5u"
+    },
+    "basic": {
+        "name": "Ashish",
+        "age": 34,
+        "dob": {
+            "$date": "1998-02-05T18:30:00.000Z"
+        },
+        "maritalStatus": "Married"
+    },
+    "currentPatients": [],
+    "allPatients": [],
+    "contact": {
+        "phone": [9858985785, 986584582],
+        "address": ["st2 shktu skns2", "st5 vaishalehktu skns2"],
+        "email": ["guptaashsish190@gmail.com","ashishgipta201@gmail.com"]
+    },
+    "qualifications": ["MBBS", "MD Gynaecology"],
+    "clinic": [79.123319, 12.937901],
+    "hospital": [79.174108, 12.946267],
+    "type": "Doctor"
+},
+{
+    "auth": {
+        "username": "ashishguptadoctor",
+        "password": "$2a$10$Kku1ytOBzTiHGd5vzDBrtupZ/h73/KmwHfWHJg1Envk3M6Y/UsW5u"
+    },
+    "basic": {
+        "name": "Ashish",
+        "age": 34,
+        "dob": {
+            "$date": "1998-02-05T18:30:00.000Z"
+        },
+        "maritalStatus": "Married"
+    },
+    "currentPatients": [],
+    "allPatients": [],
+    "contact": {
+        "phone": [9858985785, 986584582],
+        "address": ["st2 shktu skns2", "st5 vaishalehktu skns2"],
+        "email": ["guptaashsish190@gmail.com","ashishgipta201@gmail.com"]
+    },
+    "qualifications": ["MBBS", "MD Gynaecology"],
+    "clinic": [79.123319, 12.937901],
+    "hospital": [79.174108, 12.946267],
+    "type": "Doctor"
+},
+{
+    "auth": {
+        "username": "ashishguptadoctor",
+        "password": "$2a$10$Kku1ytOBzTiHGd5vzDBrtupZ/h73/KmwHfWHJg1Envk3M6Y/UsW5u"
+    },
+    "basic": {
+        "name": "Manisha Farther",
+        "age": 30,
+        "dob": {
+            "$date": "1998-02-05T18:30:00.000Z"
+        },
+        "maritalStatus": "UnMarried"
+    },
+    "currentPatients": [],
+    "allPatients": [],
+    "contact": {
+        "phone": [9858985785, 986584582],
+        "address": ["st2 shktu skns2", "st5 vaishalehktu skns2"],
+        "email": ["guptaashsish190@gmail.com","ashishgipta201@gmail.com"]
+    },
+    "qualifications": ["MBBS", "MD Gynaecology"],
+    "clinic": [79.069098, 12.958646],
+    "hospital": [79.174108, 12.946267],
+    "type": "Doctor"
+},
+{
+    "auth": {
+        "username": "ashishguptadoctor",
+        "password": "$2a$10$Kku1ytOBzTiHGd5vzDBrtupZ/h73/KmwHfWHJg1Envk3M6Y/UsW5u"
+    },
+    "basic": {
+        "name": "Umesh Farthest",
+        "age": 46,
+        "dob": {
+            "$date": "1998-02-05T18:30:00.000Z"
+        },
+        "maritalStatus": "Married"
+    },
+    "currentPatients": [],
+    "allPatients": [],
+    "contact": {
+        "phone": [9858985785, 986584582],
+        "address": ["st2 shktu skns2", "st5 vaishalehktu skns2"],
+        "email": ["guptaashsish190@gmail.com","ashishgipta201@gmail.com"]
+    },
+    "qualifications": ["MBBS", "MD Gynaecology"],
+    "clinic": [78.974348, 12.895837],
+    "hospital": [79.174108, 12.946267],
+    "type": "Doctor"
+}]

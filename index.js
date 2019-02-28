@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const keys = require('./keys');
+const SearchRoute = require('./routes/search');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -22,6 +23,7 @@ mongoose.connect(`mongodb://${keys.mongoDB.user}:${keys.mongoDB.pass}@ds145474.m
 
 app.use('/patient', PatientRoute);
 app.use('/doctor', DoctorRoute);
+app.use('/search', SearchRoute);
 app.get('/', (req, res) => {
     res.send('Working');
 });
