@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-mongoose.connect(`mongodb://${keys.mongoDB.user}:${keys.mongoDB.pass}@ds145474.mlab.com:45474/doctype`, err => {
+mongoose.connect(`mongodb://${keys.mongoDB.user}:${keys.mongoDB.pass}@ds145474.mlab.com:45474/doctype`,{useNewUrlParser: true} , err => {
     err ? console.log(err) : console.log("Connected to db");
 });
 

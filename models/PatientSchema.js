@@ -9,7 +9,6 @@ const Patient = new Schema({
     },
     basic: {
         name: String,
-        age: Number,
         height: Number,
         weight: Number,
         dob: Date,
@@ -22,10 +21,17 @@ const Patient = new Schema({
         address: [String],
         email: [String]
     },
-    doctors: {
+    doctors: [{
         doctorid: String,
         problemid: String,
-    }
+    }],
+    
+    appSpec: {
+        profilePicture: {
+            local: String,
+            url: String
+        }
+    },
 });
 
 Patient.pre('save', function (next) {

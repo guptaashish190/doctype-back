@@ -9,9 +9,14 @@ const Doctor = new Schema({
     },
     basic: {
         name: String,
-        age: Number,
         dob: Date,
         maritalStatus: String,
+    },
+    appSpec: {
+        profilePicture: {
+            local: String,
+            url: String
+        }
     },
     currentPatients: [String],
     allPatients: [String],
