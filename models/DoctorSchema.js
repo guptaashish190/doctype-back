@@ -26,8 +26,14 @@ const Doctor = new Schema({
         email: [String]
     },
     qualifications: [String],
-    clinic: [Number],//Longitude and Latitude
-    hospital: [Number],
+    clinic: {
+        name: String,
+        location: [Number]
+    },//Longitude and Latitude
+    hospital: {
+        name: String,
+        location: [Number]
+    },
     type: String
 });
 

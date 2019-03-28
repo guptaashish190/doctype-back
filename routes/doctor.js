@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 const Doctor = require('../models/DoctorSchema');
 
 router.post('/new', (req, res) => {
-    console.log(req.body);
     new Doctor(req.body).save((err) => {
+        console.log(err);
         if (err) {
             res.send({
                 success: false,

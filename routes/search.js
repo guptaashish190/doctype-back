@@ -10,7 +10,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
 
   return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
-  
+
   function deg2rad(deg) {
     return deg * (Math.PI/180)
   }
