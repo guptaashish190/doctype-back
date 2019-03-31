@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const Doctor = require('../models/DoctorSchema');
+const Appointment = require('../models/AppointmentSchema');
 
 router.post('/new', (req, res) => {
     new Doctor(req.body).save((err) => {
@@ -23,7 +24,7 @@ router.post('/new', (req, res) => {
 
 router.get('/verify', (req, res) => {
     const { username, password } = req.query;
-    Patient.findOne({ 'auth.username': username }, (err, doctor) => {
+    Doctor.findOne({ 'auth.username': username }, (err, doctor) => {
         if (doctor) {
             bcrypt.compare(password, doctor.auth.password, (err, result) => {
                 console.log(err, result);
@@ -44,6 +45,25 @@ router.get('/verify', (req, res) => {
                 valid: false,
                 data: null,
                 error: err
+            });
+        }
+    });
+});
+
+router.get('/getAppointments', (req, res) => {
+    const {doctorID} = req.query;
+    Appointment.find({doctorID}, (err, appointments) => {
+        if(err){
+            res.send({
+                err,
+                appointments: [],
+                success: false,
+            });
+        }else{
+            res.send({
+                err: null,
+                appointments,
+                success: true,
             });
         }
     });

@@ -9,6 +9,7 @@ const app = express();
 //Routes
 const PatientRoute = require('./routes/patient');
 const DoctorRoute = require('./routes/doctor');
+const ValidationRoute = require('./routes/validation');
 
 // Port
 const PORT = process.env.PORT || 8080;
@@ -24,6 +25,7 @@ mongoose.connect(`mongodb://${keys.mongoDB.user}:${keys.mongoDB.pass}@ds145474.m
 app.use('/patient', PatientRoute);
 app.use('/doctor', DoctorRoute);
 app.use('/search', SearchRoute);
+app.use('/validate', ValidationRoute);
 app.get('/', (req, res) => {
     res.send('Working');
 });

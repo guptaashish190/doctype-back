@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const Patient = require('../models/PatientSchema');
+const Appointment = require('../models/AppointmentSchema');
 
 router.post('/new', (req, res) => {
     console.log(req.body);
     new Patient(req.body).save((err) => {
+        console.log(err)
         if (err) {
             res.send({
                 success: false,
@@ -44,6 +46,36 @@ router.get('/verify', (req, res) => {
                 valid: false,
                 data: null,
                 error: err
+            });
+        }
+    });
+});
+
+
+router.post('/requestAppointment', (req, res) => {
+    const {name, description, doctorID, patientID, date, time} = req.body;
+
+    const appointment = {
+        name,
+        description,
+        doctorID,
+        patientID,
+        date,
+        time
+    }
+
+    new Appointment(appointment).save((err) => {
+        if(err){
+            res.send({
+                err,
+                message: 'Request Failed',
+                success: false
+            });
+        }else{
+            res.send({
+                err: null,
+                message: 'Appointment created',
+                success: true
             });
         }
     });
