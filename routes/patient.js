@@ -52,8 +52,9 @@ router.get('/verify', (req, res) => {
 });
 
 
+
 router.post('/requestAppointment', (req, res) => {
-    const {name, description, doctorID, patientID, date, time} = req.body;
+    const {name, description, doctorID, patientID, date, time, status} = req.body;
 
     const appointment = {
         name,
@@ -61,21 +62,52 @@ router.post('/requestAppointment', (req, res) => {
         doctorID,
         patientID,
         date,
-        time
+        time,
+        status,
     }
+    const selectedDate = new Date(date);
+    Appointment.findOne({patientID, doctorID, status: 'Requested' }, (err, result) => {
+        if(result){
+            res.send({
+                err: 'APPOINTMENT_REQ_PENDING',
+                message: 'An appointment request is already pending to this doctor.',
+                success: false
+            });
+        }else{
+            new Appointment(appointment).save((err) => {
+                if(err){
+                    res.send({
+                        err: 'Request Failed',
+                        message: 'Could not send the request to the doctor.\nPlease try again!',
+                        success: false
+                    });
+                }else{
+                    res.send({
+                        err: null,
+                        message: `The appointment has been requested to the Doctor: ${name} on ${selectedDate.getDate()}/${selectedDate.getMonth()}/${selectedDate.getFullYear()} at ${time.hour}:${time.minute}`,
+                        success: true
+                    });
+                }
+            });
+        }
+    });
+});
 
-    new Appointment(appointment).save((err) => {
+router.get('/getAppointments', (req, res) => {
+    const {patientID} = req.query;
+
+    Appointment.find({patientID}, (err, appointments) => {
         if(err){
             res.send({
                 err,
-                message: 'Request Failed',
-                success: false
+                appointments: [],
+                success: false,
             });
         }else{
             res.send({
                 err: null,
-                message: 'Appointment created',
-                success: true
+                appointments,
+                success: true,
             });
         }
     });
