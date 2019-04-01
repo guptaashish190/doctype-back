@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const Patient = require('../models/PatientSchema');
+const Doctor = require('../models/DoctorSchema');
 const Appointment = require('../models/AppointmentSchema');
 
 router.post('/new', (req, res) => {
@@ -97,6 +98,17 @@ router.get('/getAppointments', (req, res) => {
     const {patientID} = req.query;
 
     Appointment.find({patientID}, (err, appointments) => {
+        const doctorIDs = appointments.map(a => a.doctorID);
+        console.log(doctorIDs);
+        const DoctorNamePromises = [];
+
+        doctorIDs.forEach(id => {
+            DoctorNamePromises.push(Doctor.findById(id));
+        })
+
+        Promise.all(DoctorNamePromises).then(reso => {
+            const doctorNames = reso.map(doctor => doctor ? doctor.basic.name: null);
+            const apps = appointments.map((a,i) => (a._doc ? ({...a._doc,doctorName: doctorNames[i] }): null));
         if(err){
             res.send({
                 err,
@@ -106,10 +118,11 @@ router.get('/getAppointments', (req, res) => {
         }else{
             res.send({
                 err: null,
-                appointments,
+                appointments: apps,
                 success: true,
             });
         }
+        });
     });
 });
 

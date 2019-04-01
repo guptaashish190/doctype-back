@@ -8,7 +8,7 @@ const Appointment = new Schema({
     patientID: Schema.Types.ObjectId,
     time: {
         hour: Number,
-        minutes: Number
+        minute: Number
     },
     date: Date,
     shareBio: Boolean,
